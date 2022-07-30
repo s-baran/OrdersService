@@ -33,7 +33,7 @@ namespace OrdersService.ViewModels
             });
             GetOrdersCommand = new RelayCommand(() =>
             {
-                var list = orderService.GetAllOrders(new BaseRequest());
+                OrdersListResponse list = orderService.GetAllOrders(new BaseRequest());
             });
             CloseCommand = new RelayCommand(() =>
             {

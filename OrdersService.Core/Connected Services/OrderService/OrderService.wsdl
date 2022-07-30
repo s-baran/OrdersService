@@ -21,10 +21,31 @@
   <wsdl:message name="OrdersListResponse">
     <wsdl:part name="parameters" element="tns:OrdersListResponse" />
   </wsdl:message>
+  <wsdl:message name="OrdersListResponse_Headers">
+    <wsdl:part name="IsSuccess" element="tns:IsSuccess" />
+    <wsdl:part name="Message" element="tns:Message" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderDetailsRequest">
+    <wsdl:part name="parameters" element="tns:GetOrderDetailsRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderDetailsRequest_Headers">
+    <wsdl:part name="RequestId" element="tns:RequestId" />
+  </wsdl:message>
+  <wsdl:message name="OrderDetailsResponse">
+    <wsdl:part name="parameters" element="tns:OrderDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="OrderDetailsResponse_Headers">
+    <wsdl:part name="IsSuccess" element="tns:IsSuccess" />
+    <wsdl:part name="Message" element="tns:Message" />
+  </wsdl:message>
   <wsdl:portType name="IOrderService">
     <wsdl:operation name="GetAllOrders">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetAllOrders" name="BaseRequest" message="tns:BaseRequest" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/GetAllOrdersResponse" name="OrdersListResponse" message="tns:OrdersListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetOrderDetails" name="GetOrderDetailsRequest" message="tns:GetOrderDetailsRequest" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/GetOrderDetailsResponse" name="OrderDetailsResponse" message="tns:OrderDetailsResponse" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IOrderService" type="tns:IOrderService">
@@ -36,6 +57,20 @@
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output name="OrdersListResponse">
+        <soap12:header message="tns:OrdersListResponse_Headers" part="IsSuccess" use="literal" />
+        <soap12:header message="tns:OrdersListResponse_Headers" part="Message" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderDetails">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/GetOrderDetails" style="document" />
+      <wsdl:input name="GetOrderDetailsRequest">
+        <soap12:header message="tns:GetOrderDetailsRequest_Headers" part="RequestId" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="OrderDetailsResponse">
+        <soap12:header message="tns:OrderDetailsResponse_Headers" part="IsSuccess" use="literal" />
+        <soap12:header message="tns:OrderDetailsResponse_Headers" part="Message" use="literal" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

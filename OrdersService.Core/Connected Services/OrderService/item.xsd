@@ -13,4 +13,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="IsSuccess" type="xs:boolean" />
+  <xs:element name="Message" nillable="true" type="xs:string" />
+  <xs:element name="GetOrderDetailsRequest">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestId" type="xs:int" />
+  <xs:element name="OrderDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models" minOccurs="0" name="CustomerDetails" nillable="true" type="q2:Customer" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models" minOccurs="0" name="Items" nillable="true" type="q3:ArrayOfItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

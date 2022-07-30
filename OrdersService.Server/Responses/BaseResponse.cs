@@ -7,11 +7,15 @@ using System.Threading.Tasks;
 
 namespace OrdersService.Server.Responses
 {
-    [ServiceKnownType(typeof(OrdersListResponse))]
     [MessageContract]
     public class BaseResponse
     {
-        public bool IsSuccess { get; set; }
+        /// <summary>
+        /// Default = true
+        /// </summary>
+        [MessageHeader]
+        public bool IsSuccess { get; set; } = true;
+        [MessageHeader]
         public string Message { get; set; }
     }
 }

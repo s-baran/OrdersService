@@ -66,7 +66,16 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\OrderService\OrderService.wsdl" />
+    <None Include="Connected Services\OrderService\OrdersService.Core.OrderService.Customer.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OrderService\OrdersService.Core.OrderService.Item.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\OrderService\OrdersService.Core.OrderService.Order.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OrderService\OrdersService.Core.OrderService.OrderDetailsResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\OrderService\OrdersService.Core.OrderService.OrdersListResponse.datasource">

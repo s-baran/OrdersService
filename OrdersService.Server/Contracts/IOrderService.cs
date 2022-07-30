@@ -14,5 +14,8 @@ namespace OrdersService.Server.Contracts
     {
         [OperationContract]
         OrdersListResponse GetAllOrders(BaseRequest request);
+
+        [OperationContract]
+        OrderDetailsResponse GetOrderDetails(GetOrderDetailsRequest request);
     }
 }

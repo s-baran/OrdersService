@@ -21,7 +21,7 @@ namespace OrdersService.DB
             string queryString = "SELECT * from dbo.Orders;";
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
-                var command = new SqlCommand(queryString, connection);  
+                var command = new SqlCommand(queryString, connection);
                 connection.Open();
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -32,10 +32,60 @@ namespace OrdersService.DB
                 }
             }
         }
+
+        public DBOrderDetails GetOrderDetails(int requestId)
+        {
+            var orderDetails = new DBOrderDetails();
+            var items = new List<DBOrderItem>();
+            var customer = new DBCustomer();
+
+            string getOrderItemsQueryString = $"SELECT OrderItems.ItemId, Items.Name, Items.Price, OrderItems.Quantity FROM OrderItems INNER JOIN Items ON OrderId = '{requestId}' AND ItemId = Items.Id";
+            string getCustomerQueryString = $"SELECT Customers.Id, Customers.FirstName, Customers.LastName, Customers.PhoneNumber, Customers.Address FROM Customers JOIN Orders ON Orders.Id = '{requestId}' and Orders.CustomerId = Customers.Id";
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                var getOrdersCommand = new SqlCommand(getOrderItemsQueryString, connection);
+                var getCustomerCommand = new SqlCommand(getCustomerQueryString, connection);
+                connection.Open();
+                using (SqlDataReader reader = getOrdersCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        items.Add(new DBOrderItem
+                        {
+                            ItemId = (int)reader[0],
+                            Name = (string)reader[1],
+                            Price = (decimal)reader[2],
+                            Quantity = (int)reader[3]
+                        });
+                    }
+                }
+                using (SqlDataReader reader = getCustomerCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        customer = new DBCustomer
+                        {
+                            Id = (int)reader[0],
+                            FirstName = (string)reader[1],
+                            LastName = (string)reader[2],
+                            PhoneNumber = (string)reader[3],
+                            Address = (string)reader[4],
+                        };
+                    }
+                }
+            }
+
+            orderDetails.Items = items;
+            orderDetails.CustomerDetails = customer;
+
+            return orderDetails;
+        }
+
         public List<DBOrder> GetAllOrders()
         {
             var orders = new List<DBOrder>();
-            string queryString = "SELECT Orders.Id, Orders.Name, OrderStatus.Status Name FROM dbo.Orders INNER JOIN dbo.OrderStatus ON Orders.OrderStatus = OrderStatus.Id;"; 
+            string queryString = "SELECT Orders.Id, Orders.Name, OrderStatus.Status, Order.CreationTime FROM dbo.Orders INNER JOIN dbo.OrderStatus ON Orders.OrderStatusId = OrderStatus.Id;";
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 var command = new SqlCommand(queryString, connection);
@@ -48,7 +98,8 @@ namespace OrdersService.DB
                         {
                             Id = (int)reader[0],
                             Name = (string)reader[1],
-                            Status = (string)reader[2]
+                            Status = (string)reader[2],
+                            CreationTime = (DateTime)reader[3]
                         });
                     }
                 }
