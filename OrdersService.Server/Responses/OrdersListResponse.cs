@@ -12,6 +12,6 @@ namespace OrdersService.Server.Responses
     public class OrdersListResponse : BaseResponse
     {
         [MessageBodyMember]
-        public IEnumerable<Order> Orders { get; set; }
+        public IEnumerable<OrderDto> Orders { get; set; }
     }
 }

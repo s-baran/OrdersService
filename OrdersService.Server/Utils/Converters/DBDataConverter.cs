@@ -10,30 +10,11 @@ namespace OrdersService.Server.Utils.Converters
 {
     public static class DBDataConverter
     {
-        public static DBOrder Convert(Order order)
+        public static DBOrder Convert(OrderDto order) => MapperResolver.Mapper.Map<DBOrder>(order);
+        public static OrderDto Convert(DBOrder order) => MapperResolver.Mapper.Map<OrderDto>(order);
+        public static List<OrderDto> Convert(List<DBOrder> orders)
         {
-            DBOrder dBOrder = new DBOrder
-            {
-                Id = order.Id,
-                Name = order.Name,
-                Status = order.OrderStatus.ToString()
-            };
-            return dBOrder;
-        }    
-        public static Order Convert(DBOrder order)
-        {
-            Order dBOrder = new Order
-            {
-                Id = order.Id,
-                Name = order.Name,
-                OrderStatus = (OrderStatus)Enum.Parse(typeof(OrderStatus), order.Status),
-                CreationDate = order.CreationTime.ToUniversalTime(),
-            };
-            return dBOrder;
-        }
-        public static List<Order> Convert(List<DBOrder> orders)
-        {
-            var list = new List<Order>();
+            var list = new List<OrderDto>();
             foreach (DBOrder order in orders)
             {
                 list.Add(Convert(order));
@@ -42,14 +23,58 @@ namespace OrdersService.Server.Utils.Converters
             return list;
         }
 
-        internal static Customer Convert(DBCustomer customerDetails)
+        internal static List<ItemDto> Convert(List<DBItem> items)
         {
-            throw new NotImplementedException();
+            var itemsList = new List<ItemDto>();
+            foreach (DBItem item in items)
+            {
+                itemsList.Add(Convert(item));
+            }
+            return itemsList;
         }
 
-        internal static List<Item> Convert(List<DBOrderItem> items)
+        private static ItemDto Convert(DBItem item)
         {
-            throw new NotImplementedException();
+            return new ItemDto
+            {
+                Id = item.Id,
+                Price = item.Price,
+                Name = item.Name
+            };
+        }
+
+        public static CustomerDto Convert(DBCustomer customerDetails)
+        {
+            CustomerDto customer = new CustomerDto
+            {
+                Id = customerDetails.Id,
+                FirstName = customerDetails.FirstName,
+                Address = customerDetails.Address,
+                LastName = customerDetails.LastName,
+                PhoneNumber = customerDetails.PhoneNumber
+            };
+            return customer;
+        }
+
+        public static List<OrderItemDto> Convert(List<DBOrderItem> items)
+        {
+            List<OrderItemDto> list = new List<OrderItemDto>();
+            foreach (DBOrderItem item in items)
+            {
+                list.Add(Convert(item));
+            }
+            return list;
+        }
+
+        private static OrderItemDto Convert(DBOrderItem item)
+        {
+            return new OrderItemDto
+            {
+                Id = item.ItemId,
+                Name = item.Name,
+                Price = item.Price,
+                Quantity = item.Quantity
+            };
         }
     }
 }

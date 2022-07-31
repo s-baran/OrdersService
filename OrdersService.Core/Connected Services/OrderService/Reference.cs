@@ -15,9 +15,9 @@ namespace OrdersService.Core.OrderService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Order", Namespace="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderDto", Namespace="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models")]
     [System.SerializableAttribute()]
-    public partial class Order : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class OrderDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -32,7 +32,7 @@ namespace OrdersService.Core.OrderService {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private OrdersService.Core.OrderService.OrderStatus OrderStatusField;
+        private OrdersService.Core.OrderService.OrderStatusDto OrderStatusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -84,7 +84,7 @@ namespace OrdersService.Core.OrderService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public OrdersService.Core.OrderService.OrderStatus OrderStatus {
+        public OrdersService.Core.OrderService.OrderStatusDto OrderStatus {
             get {
                 return this.OrderStatusField;
             }
@@ -107,8 +107,8 @@ namespace OrdersService.Core.OrderService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OrderStatus", Namespace="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models")]
-    public enum OrderStatus : int {
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderStatusDto", Namespace="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models")]
+    public enum OrderStatusDto : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         Pending = 0,
@@ -155,9 +155,86 @@ namespace OrdersService.Core.OrderService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Customer", Namespace="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ItemDto", Namespace="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models")]
     [System.SerializableAttribute()]
-    public partial class Customer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class ItemDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal PriceField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Price {
+            get {
+                return this.PriceField;
+            }
+            set {
+                if ((this.PriceField.Equals(value) != true)) {
+                    this.PriceField = value;
+                    this.RaisePropertyChanged("Price");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerDto", Namespace="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models")]
+    [System.SerializableAttribute()]
+    public partial class CustomerDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -264,9 +341,9 @@ namespace OrdersService.Core.OrderService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Item", Namespace="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderItemDto", Namespace="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models")]
     [System.SerializableAttribute()]
-    public partial class Item : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class OrderItemDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -355,6 +432,83 @@ namespace OrdersService.Core.OrderService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CreateOrderModelDto", Namespace="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models")]
+    [System.SerializableAttribute()]
+    public partial class CreateOrderModelDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private OrdersService.Core.OrderService.CustomerDto CustomerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private OrdersService.Core.OrderService.OrderItemDto[] ItemsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrderNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public OrdersService.Core.OrderService.CustomerDto Customer {
+            get {
+                return this.CustomerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CustomerField, value) != true)) {
+                    this.CustomerField = value;
+                    this.RaisePropertyChanged("Customer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public OrdersService.Core.OrderService.OrderItemDto[] Items {
+            get {
+                return this.ItemsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ItemsField, value) != true)) {
+                    this.ItemsField = value;
+                    this.RaisePropertyChanged("Items");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrderName {
+            get {
+                return this.OrderNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderNameField, value) != true)) {
+                    this.OrderNameField = value;
+                    this.RaisePropertyChanged("OrderName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="OrderService.IOrderService")]
     public interface IOrderService {
@@ -366,12 +520,33 @@ namespace OrdersService.Core.OrderService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetAllOrders", ReplyAction="http://tempuri.org/IOrderService/GetAllOrdersResponse")]
         System.Threading.Tasks.Task<OrdersService.Core.OrderService.OrdersListResponse> GetAllOrdersAsync(OrdersService.Core.OrderService.BaseRequest request);
         
+        // CODEGEN: Generating message contract since the wrapper name (BaseRequest) of message BaseRequest does not match the default value (GetAllItems)
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetAllItems", ReplyAction="http://tempuri.org/IOrderService/GetAllItemsResponse")]
+        OrdersService.Core.OrderService.ItemsListResponse GetAllItems(OrdersService.Core.OrderService.BaseRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetAllItems", ReplyAction="http://tempuri.org/IOrderService/GetAllItemsResponse")]
+        System.Threading.Tasks.Task<OrdersService.Core.OrderService.ItemsListResponse> GetAllItemsAsync(OrdersService.Core.OrderService.BaseRequest request);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrderDetails", ReplyAction="http://tempuri.org/IOrderService/GetOrderDetailsResponse")]
         OrdersService.Core.OrderService.OrderDetailsResponse GetOrderDetails(OrdersService.Core.OrderService.GetOrderDetailsRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrderDetails", ReplyAction="http://tempuri.org/IOrderService/GetOrderDetailsResponse")]
         System.Threading.Tasks.Task<OrdersService.Core.OrderService.OrderDetailsResponse> GetOrderDetailsAsync(OrdersService.Core.OrderService.GetOrderDetailsRequest request);
+        
+        // CODEGEN: Generating message contract since the wrapper name (RemoveOrderRequest) of message RemoveOrderRequest does not match the default value (RemoveOrder)
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/RemoveOrder", ReplyAction="http://tempuri.org/IOrderService/RemoveOrderResponse")]
+        OrdersService.Core.OrderService.BaseResponse RemoveOrder(OrdersService.Core.OrderService.RemoveOrderRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/RemoveOrder", ReplyAction="http://tempuri.org/IOrderService/RemoveOrderResponse")]
+        System.Threading.Tasks.Task<OrdersService.Core.OrderService.BaseResponse> RemoveOrderAsync(OrdersService.Core.OrderService.RemoveOrderRequest request);
+        
+        // CODEGEN: Generating message contract since the wrapper name (AddOrderRequest) of message AddOrderRequest does not match the default value (AddNewOrder)
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/AddNewOrder", ReplyAction="http://tempuri.org/IOrderService/AddNewOrderResponse")]
+        OrdersService.Core.OrderService.BaseResponse AddNewOrder(OrdersService.Core.OrderService.AddOrderRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/AddNewOrder", ReplyAction="http://tempuri.org/IOrderService/AddNewOrderResponse")]
+        System.Threading.Tasks.Task<OrdersService.Core.OrderService.BaseResponse> AddNewOrderAsync(OrdersService.Core.OrderService.AddOrderRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -397,15 +572,40 @@ namespace OrdersService.Core.OrderService {
         public string Message;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public OrdersService.Core.OrderService.Order[] Orders;
+        public OrdersService.Core.OrderService.OrderDto[] Orders;
         
         public OrdersListResponse() {
         }
         
-        public OrdersListResponse(bool IsSuccess, string Message, OrdersService.Core.OrderService.Order[] Orders) {
+        public OrdersListResponse(bool IsSuccess, string Message, OrdersService.Core.OrderService.OrderDto[] Orders) {
             this.IsSuccess = IsSuccess;
             this.Message = Message;
             this.Orders = Orders;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ItemsListResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ItemsListResponse {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public bool IsSuccess;
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public string Message;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public OrdersService.Core.OrderService.ItemDto[] Items;
+        
+        public ItemsListResponse() {
+        }
+        
+        public ItemsListResponse(bool IsSuccess, string Message, OrdersService.Core.OrderService.ItemDto[] Items) {
+            this.IsSuccess = IsSuccess;
+            this.Message = Message;
+            this.Items = Items;
         }
     }
     
@@ -415,13 +615,13 @@ namespace OrdersService.Core.OrderService {
     public partial class GetOrderDetailsRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
-        public int RequestId;
+        public int OrderId;
         
         public GetOrderDetailsRequest() {
         }
         
-        public GetOrderDetailsRequest(int RequestId) {
-            this.RequestId = RequestId;
+        public GetOrderDetailsRequest(int OrderId) {
+            this.OrderId = OrderId;
         }
     }
     
@@ -437,19 +637,74 @@ namespace OrdersService.Core.OrderService {
         public string Message;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public OrdersService.Core.OrderService.Customer CustomerDetails;
+        public OrdersService.Core.OrderService.CustomerDto CustomerDetails;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        public OrdersService.Core.OrderService.Item[] Items;
+        public OrdersService.Core.OrderService.OrderItemDto[] Items;
         
         public OrderDetailsResponse() {
         }
         
-        public OrderDetailsResponse(bool IsSuccess, string Message, OrdersService.Core.OrderService.Customer CustomerDetails, OrdersService.Core.OrderService.Item[] Items) {
+        public OrderDetailsResponse(bool IsSuccess, string Message, OrdersService.Core.OrderService.CustomerDto CustomerDetails, OrdersService.Core.OrderService.OrderItemDto[] Items) {
             this.IsSuccess = IsSuccess;
             this.Message = Message;
             this.CustomerDetails = CustomerDetails;
             this.Items = Items;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RemoveOrderRequest", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class RemoveOrderRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public int OrderId;
+        
+        public RemoveOrderRequest() {
+        }
+        
+        public RemoveOrderRequest(int OrderId) {
+            this.OrderId = OrderId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="BaseResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class BaseResponse {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public bool IsSuccess;
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public string Message;
+        
+        public BaseResponse() {
+        }
+        
+        public BaseResponse(bool IsSuccess, string Message) {
+            this.IsSuccess = IsSuccess;
+            this.Message = Message;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AddOrderRequest", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class AddOrderRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public OrdersService.Core.OrderService.CreateOrderModelDto CreateOrderModel;
+        
+        public AddOrderRequest() {
+        }
+        
+        public AddOrderRequest(OrdersService.Core.OrderService.CreateOrderModelDto CreateOrderModel) {
+            this.CreateOrderModel = CreateOrderModel;
         }
     }
     
@@ -485,7 +740,7 @@ namespace OrdersService.Core.OrderService {
             return base.Channel.GetAllOrders(request);
         }
         
-        public bool GetAllOrders(out string Message, out OrdersService.Core.OrderService.Order[] Orders) {
+        public bool GetAllOrders(out string Message, out OrdersService.Core.OrderService.OrderDto[] Orders) {
             OrdersService.Core.OrderService.BaseRequest inValue = new OrdersService.Core.OrderService.BaseRequest();
             OrdersService.Core.OrderService.OrdersListResponse retVal = ((OrdersService.Core.OrderService.IOrderService)(this)).GetAllOrders(inValue);
             Message = retVal.Message;
@@ -504,13 +759,36 @@ namespace OrdersService.Core.OrderService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        OrdersService.Core.OrderService.ItemsListResponse OrdersService.Core.OrderService.IOrderService.GetAllItems(OrdersService.Core.OrderService.BaseRequest request) {
+            return base.Channel.GetAllItems(request);
+        }
+        
+        public bool GetAllItems(out string Message, out OrdersService.Core.OrderService.ItemDto[] Items) {
+            OrdersService.Core.OrderService.BaseRequest inValue = new OrdersService.Core.OrderService.BaseRequest();
+            OrdersService.Core.OrderService.ItemsListResponse retVal = ((OrdersService.Core.OrderService.IOrderService)(this)).GetAllItems(inValue);
+            Message = retVal.Message;
+            Items = retVal.Items;
+            return retVal.IsSuccess;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<OrdersService.Core.OrderService.ItemsListResponse> OrdersService.Core.OrderService.IOrderService.GetAllItemsAsync(OrdersService.Core.OrderService.BaseRequest request) {
+            return base.Channel.GetAllItemsAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<OrdersService.Core.OrderService.ItemsListResponse> GetAllItemsAsync() {
+            OrdersService.Core.OrderService.BaseRequest inValue = new OrdersService.Core.OrderService.BaseRequest();
+            return ((OrdersService.Core.OrderService.IOrderService)(this)).GetAllItemsAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         OrdersService.Core.OrderService.OrderDetailsResponse OrdersService.Core.OrderService.IOrderService.GetOrderDetails(OrdersService.Core.OrderService.GetOrderDetailsRequest request) {
             return base.Channel.GetOrderDetails(request);
         }
         
-        public bool GetOrderDetails(int RequestId, out string Message, out OrdersService.Core.OrderService.Customer CustomerDetails, out OrdersService.Core.OrderService.Item[] Items) {
+        public bool GetOrderDetails(int OrderId, out string Message, out OrdersService.Core.OrderService.CustomerDto CustomerDetails, out OrdersService.Core.OrderService.OrderItemDto[] Items) {
             OrdersService.Core.OrderService.GetOrderDetailsRequest inValue = new OrdersService.Core.OrderService.GetOrderDetailsRequest();
-            inValue.RequestId = RequestId;
+            inValue.OrderId = OrderId;
             OrdersService.Core.OrderService.OrderDetailsResponse retVal = ((OrdersService.Core.OrderService.IOrderService)(this)).GetOrderDetails(inValue);
             Message = retVal.Message;
             CustomerDetails = retVal.CustomerDetails;
@@ -520,6 +798,54 @@ namespace OrdersService.Core.OrderService {
         
         public System.Threading.Tasks.Task<OrdersService.Core.OrderService.OrderDetailsResponse> GetOrderDetailsAsync(OrdersService.Core.OrderService.GetOrderDetailsRequest request) {
             return base.Channel.GetOrderDetailsAsync(request);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        OrdersService.Core.OrderService.BaseResponse OrdersService.Core.OrderService.IOrderService.RemoveOrder(OrdersService.Core.OrderService.RemoveOrderRequest request) {
+            return base.Channel.RemoveOrder(request);
+        }
+        
+        public bool RemoveOrder(int OrderId, out string Message) {
+            OrdersService.Core.OrderService.RemoveOrderRequest inValue = new OrdersService.Core.OrderService.RemoveOrderRequest();
+            inValue.OrderId = OrderId;
+            OrdersService.Core.OrderService.BaseResponse retVal = ((OrdersService.Core.OrderService.IOrderService)(this)).RemoveOrder(inValue);
+            Message = retVal.Message;
+            return retVal.IsSuccess;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<OrdersService.Core.OrderService.BaseResponse> OrdersService.Core.OrderService.IOrderService.RemoveOrderAsync(OrdersService.Core.OrderService.RemoveOrderRequest request) {
+            return base.Channel.RemoveOrderAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<OrdersService.Core.OrderService.BaseResponse> RemoveOrderAsync(int OrderId) {
+            OrdersService.Core.OrderService.RemoveOrderRequest inValue = new OrdersService.Core.OrderService.RemoveOrderRequest();
+            inValue.OrderId = OrderId;
+            return ((OrdersService.Core.OrderService.IOrderService)(this)).RemoveOrderAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        OrdersService.Core.OrderService.BaseResponse OrdersService.Core.OrderService.IOrderService.AddNewOrder(OrdersService.Core.OrderService.AddOrderRequest request) {
+            return base.Channel.AddNewOrder(request);
+        }
+        
+        public bool AddNewOrder(OrdersService.Core.OrderService.CreateOrderModelDto CreateOrderModel, out string Message) {
+            OrdersService.Core.OrderService.AddOrderRequest inValue = new OrdersService.Core.OrderService.AddOrderRequest();
+            inValue.CreateOrderModel = CreateOrderModel;
+            OrdersService.Core.OrderService.BaseResponse retVal = ((OrdersService.Core.OrderService.IOrderService)(this)).AddNewOrder(inValue);
+            Message = retVal.Message;
+            return retVal.IsSuccess;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<OrdersService.Core.OrderService.BaseResponse> OrdersService.Core.OrderService.IOrderService.AddNewOrderAsync(OrdersService.Core.OrderService.AddOrderRequest request) {
+            return base.Channel.AddNewOrderAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<OrdersService.Core.OrderService.BaseResponse> AddNewOrderAsync(OrdersService.Core.OrderService.CreateOrderModelDto CreateOrderModel) {
+            OrdersService.Core.OrderService.AddOrderRequest inValue = new OrdersService.Core.OrderService.AddOrderRequest();
+            inValue.CreateOrderModel = CreateOrderModel;
+            return ((OrdersService.Core.OrderService.IOrderService)(this)).AddNewOrderAsync(inValue);
         }
     }
 }

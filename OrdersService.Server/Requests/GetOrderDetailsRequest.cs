@@ -6,7 +6,7 @@ namespace OrdersService.Server.Requests
     public class GetOrderDetailsRequest : BaseRequest
     {
         [MessageHeader]
-        public int RequestId { get; set; }
+        public int OrderId { get; set; }
 
     }
 }

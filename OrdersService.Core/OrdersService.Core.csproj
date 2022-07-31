@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Utils\ServiceProvider.cs" />
     <Compile Include="Connected Services\OrderService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -66,16 +66,25 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\OrderService\OrderService.wsdl" />
-    <None Include="Connected Services\OrderService\OrdersService.Core.OrderService.Customer.datasource">
+    <None Include="Connected Services\OrderService\OrdersService.Core.OrderService.BaseResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\OrderService\OrdersService.Core.OrderService.Item.datasource">
+    <None Include="Connected Services\OrderService\OrdersService.Core.OrderService.CustomerDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\OrderService\OrdersService.Core.OrderService.Order.datasource">
+    <None Include="Connected Services\OrderService\OrdersService.Core.OrderService.ItemDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OrderService\OrdersService.Core.OrderService.ItemsListResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\OrderService\OrdersService.Core.OrderService.OrderDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OrderService\OrdersService.Core.OrderService.OrderDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OrderService\OrdersService.Core.OrderService.OrderItemDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\OrderService\OrdersService.Core.OrderService.OrdersListResponse.datasource">

@@ -9,23 +9,47 @@
   <xs:element name="OrdersListResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models" minOccurs="0" name="Orders" nillable="true" type="q1:ArrayOfOrder" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models" minOccurs="0" name="Orders" nillable="true" type="q1:ArrayOfOrderDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="IsSuccess" type="xs:boolean" />
   <xs:element name="Message" nillable="true" type="xs:string" />
+  <xs:element name="ItemsListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models" minOccurs="0" name="Items" nillable="true" type="q2:ArrayOfItemDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetOrderDetailsRequest">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="RequestId" type="xs:int" />
+  <xs:element name="OrderId" type="xs:int" />
   <xs:element name="OrderDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models" minOccurs="0" name="CustomerDetails" nillable="true" type="q2:Customer" />
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models" minOccurs="0" name="Items" nillable="true" type="q3:ArrayOfItem" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models" minOccurs="0" name="CustomerDetails" nillable="true" type="q3:CustomerDto" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models" minOccurs="0" name="Items" nillable="true" type="q4:ArrayOfOrderItemDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveOrderRequest">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BaseResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddOrderRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models" minOccurs="0" name="CreateOrderModel" nillable="true" type="q5:CreateOrderModelDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

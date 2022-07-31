@@ -5,25 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OrdersService.Views" xmlns:viewmodels="clr-namespace:OrdersService.ViewModels"
         d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
+        xmlns:b="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Window.Resources>
-        <ResourceDictionary>
-            <Style TargetType="{x:Type Button}"  x:Key="btnStyle"> 
-                <Setter Property="Padding" Value="5"/>
-            </Style>
-        </ResourceDictionary>
-    </Window.Resources>
+    <b:Interaction.Triggers>
+        <b:EventTrigger EventName="Loaded">
+            <b:InvokeCommandAction Command="{Binding OnLoadedCommand}" />
+        </b:EventTrigger>
+    </b:Interaction.Triggers> 
     <Grid>
-        <StackPanel>
-            <StackPanel.Resources>
-                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource btnStyle}">
-                    <Setter Property="Margin" Value="5"/>
-                </Style>
-            </StackPanel.Resources>
-            <Button Content="Login" Command="{Binding LoginCommand}" HorizontalAlignment="Center" />
-            <Button Content="Get Orders" Command="{Binding GetOrdersCommand}" HorizontalAlignment="Center" />
-            <Button Content="Close" Command="{Binding CloseCommand}" HorizontalAlignment="Center" />
-        </StackPanel>
+        <ContentControl Name="content"/>
     </Grid>
 </Window>

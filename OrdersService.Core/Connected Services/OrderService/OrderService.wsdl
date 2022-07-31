@@ -25,11 +25,18 @@
     <wsdl:part name="IsSuccess" element="tns:IsSuccess" />
     <wsdl:part name="Message" element="tns:Message" />
   </wsdl:message>
+  <wsdl:message name="ItemsListResponse">
+    <wsdl:part name="parameters" element="tns:ItemsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ItemsListResponse_Headers">
+    <wsdl:part name="IsSuccess" element="tns:IsSuccess" />
+    <wsdl:part name="Message" element="tns:Message" />
+  </wsdl:message>
   <wsdl:message name="GetOrderDetailsRequest">
     <wsdl:part name="parameters" element="tns:GetOrderDetailsRequest" />
   </wsdl:message>
   <wsdl:message name="GetOrderDetailsRequest_Headers">
-    <wsdl:part name="RequestId" element="tns:RequestId" />
+    <wsdl:part name="OrderId" element="tns:OrderId" />
   </wsdl:message>
   <wsdl:message name="OrderDetailsResponse">
     <wsdl:part name="parameters" element="tns:OrderDetailsResponse" />
@@ -38,14 +45,42 @@
     <wsdl:part name="IsSuccess" element="tns:IsSuccess" />
     <wsdl:part name="Message" element="tns:Message" />
   </wsdl:message>
+  <wsdl:message name="RemoveOrderRequest">
+    <wsdl:part name="parameters" element="tns:RemoveOrderRequest" />
+  </wsdl:message>
+  <wsdl:message name="RemoveOrderRequest_Headers">
+    <wsdl:part name="OrderId" element="tns:OrderId" />
+  </wsdl:message>
+  <wsdl:message name="BaseResponse">
+    <wsdl:part name="parameters" element="tns:BaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="BaseResponse_Headers">
+    <wsdl:part name="IsSuccess" element="tns:IsSuccess" />
+    <wsdl:part name="Message" element="tns:Message" />
+  </wsdl:message>
+  <wsdl:message name="AddOrderRequest">
+    <wsdl:part name="parameters" element="tns:AddOrderRequest" />
+  </wsdl:message>
   <wsdl:portType name="IOrderService">
     <wsdl:operation name="GetAllOrders">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetAllOrders" name="BaseRequest" message="tns:BaseRequest" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/GetAllOrdersResponse" name="OrdersListResponse" message="tns:OrdersListResponse" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllItems">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetAllItems" name="BaseRequest" message="tns:BaseRequest" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/GetAllItemsResponse" name="ItemsListResponse" message="tns:ItemsListResponse" />
+    </wsdl:operation>
     <wsdl:operation name="GetOrderDetails">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetOrderDetails" name="GetOrderDetailsRequest" message="tns:GetOrderDetailsRequest" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/GetOrderDetailsResponse" name="OrderDetailsResponse" message="tns:OrderDetailsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/RemoveOrder" name="RemoveOrderRequest" message="tns:RemoveOrderRequest" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/RemoveOrderResponse" name="BaseResponse" message="tns:BaseResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/AddNewOrder" name="AddOrderRequest" message="tns:AddOrderRequest" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/AddNewOrderResponse" name="BaseResponse" message="tns:BaseResponse" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IOrderService" type="tns:IOrderService">
@@ -62,15 +97,49 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllItems">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/GetAllItems" style="document" />
+      <wsdl:input name="BaseRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ItemsListResponse">
+        <soap12:header message="tns:ItemsListResponse_Headers" part="IsSuccess" use="literal" />
+        <soap12:header message="tns:ItemsListResponse_Headers" part="Message" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetOrderDetails">
       <soap12:operation soapAction="http://tempuri.org/IOrderService/GetOrderDetails" style="document" />
       <wsdl:input name="GetOrderDetailsRequest">
-        <soap12:header message="tns:GetOrderDetailsRequest_Headers" part="RequestId" use="literal" />
+        <soap12:header message="tns:GetOrderDetailsRequest_Headers" part="OrderId" use="literal" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output name="OrderDetailsResponse">
         <soap12:header message="tns:OrderDetailsResponse_Headers" part="IsSuccess" use="literal" />
         <soap12:header message="tns:OrderDetailsResponse_Headers" part="Message" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveOrder">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/RemoveOrder" style="document" />
+      <wsdl:input name="RemoveOrderRequest">
+        <soap12:header message="tns:RemoveOrderRequest_Headers" part="OrderId" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="BaseResponse">
+        <soap12:header message="tns:BaseResponse_Headers" part="IsSuccess" use="literal" />
+        <soap12:header message="tns:BaseResponse_Headers" part="Message" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewOrder">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/AddNewOrder" style="document" />
+      <wsdl:input name="AddOrderRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="BaseResponse">
+        <soap12:header message="tns:BaseResponse_Headers" part="IsSuccess" use="literal" />
+        <soap12:header message="tns:BaseResponse_Headers" part="Message" use="literal" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

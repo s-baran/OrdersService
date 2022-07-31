@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceModel" />
@@ -48,16 +51,21 @@
     <Compile Include="Contracts\IOrderService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Requests\AddOrderRequest.cs" />
     <Compile Include="Requests\BaseRequest.cs" />
     <Compile Include="Requests\GetOrderDetailsRequest.cs" />
+    <Compile Include="Requests\RemoveOrderRequest.cs" />
     <Compile Include="Responses\BaseResponse.cs" />
+    <Compile Include="Responses\ItemsListResponse.cs" />
     <Compile Include="Responses\OrderDetailsResponse.cs" />
     <Compile Include="Responses\OrdersListResponse.cs" />
+    <Compile Include="Utils\MapperResolver.cs" />
     <Compile Include="Utils\Converters\DBDataConverter.cs" />
     <Compile Include="Utils\ServiceRunner.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OrdersService.Common\OrdersService.Common.csproj">

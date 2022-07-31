@@ -60,6 +60,7 @@
     <Compile Include="Database.cs" />
     <Compile Include="DatabaseModels\DBCustomer.cs" />
     <Compile Include="DatabaseModels\DBItem.cs" />
+    <Compile Include="DatabaseModels\DBNewOrder.cs" />
     <Compile Include="DatabaseModels\DBOrder.cs" />
     <Compile Include="DatabaseModels\DBOrderDetails.cs" />
     <Compile Include="DatabaseModels\DBOrderItem.cs" />

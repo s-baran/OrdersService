@@ -12,9 +12,9 @@ namespace OrdersService.Server.Responses
     public class OrderDetailsResponse : BaseResponse
     {
         [MessageBodyMember]
-        public Customer CustomerDetails { get; set; }
+        public CustomerDto CustomerDetails { get; set; }
         [MessageBodyMember]
-        public List<Item> Items { get; set; }
+        public List<OrderItemDto> Items { get; set; }
 
     }
 }

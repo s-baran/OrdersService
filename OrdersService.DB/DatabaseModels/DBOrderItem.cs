@@ -8,6 +8,7 @@ namespace OrdersService.DB.DatabaseModels
 {
     public class DBOrderItem
     {
+        public int OrderId { get; set; }
         public int ItemId { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }

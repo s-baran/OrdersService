@@ -1,4 +1,5 @@
-﻿using OrdersService.ViewModels;
+﻿using OrdersService.IoC;
+using OrdersService.ViewModels;
 using OrdersService.Views;
 using System;
 using System.Collections.Generic;
@@ -18,11 +19,17 @@ namespace OrdersService
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+            InitializeDI();
+
             MainWindow window = new MainWindow();
             var viewModel = new MainWindowViewModel();
             viewModel.RequestClose += delegate { window.Close(); };
             window.DataContext = viewModel;
             window.Show();
+        }
+        private void InitializeDI()
+        {
+            IocKernel.Initialize(new IocConfiguration());
         }
     }
 }

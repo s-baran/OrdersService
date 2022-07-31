@@ -1,50 +1,34 @@
 ﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using OrdersService.Core.OrderService;
+using GalaSoft.MvvmLight.CommandWpf;
+using OrdersService.IoC;
+using OrdersService.Utils;
+using OrdersService.Views;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OrdersService.ViewModels
 {
-    internal class MainWindowViewModel : ViewModelBase
+    public class MainWindowViewModel : ViewModelBase
     {
-        static string uri = "net.tcp://localhost:6565/OrderService";
-        private IOrderService orderService;
+       
+        private NavigationService navigationService;
+
         public MainWindowViewModel()
         {
             InitializeCommands();
+            navigationService = IocKernel.Get<NavigationService>();
         }
+        public RelayCommand OnLoadedCommand { get; set; }
 
         private void InitializeCommands()
         {
-            LoginCommand = new RelayCommand(() =>
+            OnLoadedCommand = new RelayCommand(() =>
             {
-                if (orderService == null)
-                {
-                    NetTcpBinding binding = new NetTcpBinding(SecurityMode.None);
-                    var channel = new ChannelFactory<IOrderService>(binding);
-                    var endpoint = new EndpointAddress(uri);
-                    orderService = channel.CreateChannel(endpoint);
-                }
+                navigationService.NavigateTo(new LoginView { DataContext = new LoginViewModel()}); 
             });
-            GetOrdersCommand = new RelayCommand(() =>
-            {
-                OrdersListResponse list = orderService.GetAllOrders(new BaseRequest());
-            });
-            CloseCommand = new RelayCommand(() =>
-            {
-                RequestClose();
-            });
+        
         }
 
         public Action RequestClose { get; internal set; }
 
-        public RelayCommand CloseCommand { get; set; }
-        public RelayCommand GetOrdersCommand { get; set; }
-        public RelayCommand LoginCommand { get; set; }
     }
 }
