@@ -24,10 +24,11 @@ namespace OrdersService.ViewModels
             set { ordersList = value; RaisePropertyChanged(nameof(OrdersList)); }
         }
 
-         
+
         public RelayCommand AddOrderCommand { get; set; }
         public RelayCommand<int> ViewDetailsCommand { get; set; }
         public RelayCommand LoadedCommand { get; set; }
+        public RelayCommand<ReportType> GetReport { get; set; }
         public OrdersListViewModel()
         {
             navigationService = IocKernel.Get<NavigationService>();
@@ -36,6 +37,11 @@ namespace OrdersService.ViewModels
 
         private void InitializeCommands()
         {
+            GetReport = new RelayCommand<ReportType>((reportType) =>
+            {
+                var reportPage = new ReportResolver(reportType).GetReportPage();
+                navigationService.NavigateTo(reportPage);
+            });
             AddOrderCommand = new RelayCommand(() =>
             {
                 var form = new NewOrderDetailsWindow();
@@ -59,7 +65,7 @@ namespace OrdersService.ViewModels
             });
         }
 
-       
+
         private void ShowOrderDetails(Order order)
         {
             var orderDetailsView = IocKernel.Get<OrderDetailsView>();

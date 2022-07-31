@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OrdersService.Utils.DataLoaders
 {
-    public abstract class DataLoader<T>
+    public abstract class DataLoader<T> : IDataLoader<T>
     {
         public IOrderService orderService { get; }
 

@@ -45,6 +45,31 @@ namespace OrdersService.DB
         }
 
 
+        public List<DBCustomer> GetAllCustomers()
+        {
+            var items = new List<DBCustomer>();
+            string queryString = "SELECT Id, FirstName, LastName, PhoneNumber, Address FROM dbo.Customers";
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                var command = new SqlCommand(queryString, connection);
+                connection.Open();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        items.Add(new DBCustomer
+                        {
+                            Id = (int)reader[0],
+                            FirstName = (string)reader[1],
+                            LastName = (string)reader[2],
+                            PhoneNumber = (string)reader[3],
+                            Address= (string)reader[4],
+                        });
+                    }
+                }
+            }
+            return items; 
+        }
         public List<DBItem> GetAllItems()
         {
             var items = new List<DBItem>();
@@ -107,6 +132,53 @@ namespace OrdersService.DB
             }
             return -1;
         }
+
+        public decimal GetOrderTotalPrice(int orderId)
+        {
+            StringBuilder queryBuilder = new StringBuilder();
+            queryBuilder.Append("Select SUM(o.Quantity * Price) TotalPrice ");
+            queryBuilder.Append("FROM OrderItems o JOIN Items i ON(o.ItemId = i.Id) ");
+            queryBuilder.Append($"WHERE OrderId = '{orderId}'");
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                var command = new SqlCommand(queryBuilder.ToString(), connection);
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        return (decimal)reader[0];
+                    }
+                }
+            }
+            return 0;
+        }
+
+        public List<DBOrder> GetCustomerOrders(int customerId)
+        {
+            var orders = new List<DBOrder>();
+            string queryString = $"SELECT Orders.Id, Orders.Name, OrderStatus.Status, Orders.CreationTime FROM dbo.Orders INNER JOIN dbo.OrderStatus ON Orders.OrderStatusId = OrderStatus.Id AND CustomerId = {customerId}";
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                var command = new SqlCommand(queryString, connection);
+                connection.Open();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        orders.Add(new DBOrder
+                        {
+                            Id = (int)reader[0],
+                            Name = (string)reader[1],
+                            Status = (string)reader[2],
+                            CreationTime = (DateTime)reader[3]
+                        });
+                    }
+                }
+            }
+            return orders;
+        }
+
         public bool CreateOrderItems(List<DBOrderItem> newOrderItem)
         {
             if (newOrderItem.Count == 0)

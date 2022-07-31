@@ -22,6 +22,13 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CustomersListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models" minOccurs="0" name="Customers" nillable="true" type="q3:ArrayOfCustomerDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetOrderDetailsRequest">
     <xs:complexType>
       <xs:sequence />
@@ -31,8 +38,21 @@
   <xs:element name="OrderDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models" minOccurs="0" name="CustomerDetails" nillable="true" type="q3:CustomerDto" />
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models" minOccurs="0" name="Items" nillable="true" type="q4:ArrayOfOrderItemDto" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models" minOccurs="0" name="CustomerDetails" nillable="true" type="q4:CustomerDto" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models" minOccurs="0" name="Items" nillable="true" type="q5:ArrayOfOrderItemDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCustomerOrdersRequest">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerId" type="xs:int" />
+  <xs:element name="CustomerOrdersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models" minOccurs="0" name="CustomerOrders" nillable="true" type="q6:ArrayOfCustomerOrderDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -49,7 +69,7 @@
   <xs:element name="AddOrderRequest">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models" minOccurs="0" name="CreateOrderModel" nillable="true" type="q5:CreateOrderModelDto" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/OrdersService.Common.Models" minOccurs="0" name="CreateOrderModel" nillable="true" type="q7:CreateOrderModelDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -72,6 +72,15 @@
     <None Include="Connected Services\OrderService\OrdersService.Core.OrderService.CustomerDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\OrderService\OrdersService.Core.OrderService.CustomerOrderDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OrderService\OrdersService.Core.OrderService.CustomerOrdersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OrderService\OrdersService.Core.OrderService.CustomersListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\OrderService\OrdersService.Core.OrderService.ItemDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

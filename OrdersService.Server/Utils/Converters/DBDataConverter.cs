@@ -56,25 +56,8 @@ namespace OrdersService.Server.Utils.Converters
             return customer;
         }
 
-        public static List<OrderItemDto> Convert(List<DBOrderItem> items)
-        {
-            List<OrderItemDto> list = new List<OrderItemDto>();
-            foreach (DBOrderItem item in items)
-            {
-                list.Add(Convert(item));
-            }
-            return list;
-        }
-
-        private static OrderItemDto Convert(DBOrderItem item)
-        {
-            return new OrderItemDto
-            {
-                Id = item.ItemId,
-                Name = item.Name,
-                Price = item.Price,
-                Quantity = item.Quantity
-            };
-        }
+        public static List<OrderItemDto> Convert(List<DBOrderItem> items) => MapperResolver.Mapper.Map<List<OrderItemDto>>(items);
+        
+        public static List<CustomerDto> Convert(List<DBCustomer> customersList) => MapperResolver.Mapper.Map<List<CustomerDto>>(customersList);
     }
 }

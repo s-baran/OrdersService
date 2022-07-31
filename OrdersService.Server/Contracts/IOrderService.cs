@@ -19,7 +19,13 @@ namespace OrdersService.Server.Contracts
         ItemsListResponse GetAllItems(BaseRequest request);
 
         [OperationContract]
+        CustomersListResponse GetAllCustomers(BaseRequest request);
+
+        [OperationContract]
         OrderDetailsResponse GetOrderDetails(GetOrderDetailsRequest request);
+        
+        [OperationContract]
+        CustomerOrdersResponse GetCustomerOrders(GetCustomerOrdersRequest request);
 
         [OperationContract]
         BaseResponse RemoveOrder(RemoveOrderRequest request);

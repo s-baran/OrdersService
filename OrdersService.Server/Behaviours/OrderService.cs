@@ -9,6 +9,7 @@ using OrdersService.Server.Utils;
 using OrdersService.Server.Utils.Converters;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.ServiceModel;
 
 namespace OrdersService.Server.Behaviours
@@ -53,6 +54,29 @@ namespace OrdersService.Server.Behaviours
                 new BaseResponse { IsSuccess = false, Message = ex.Message };
             }
             return new BaseResponse { IsSuccess = true };
+        }
+
+        public CustomersListResponse GetAllCustomers(BaseRequest request)
+        {
+            Console.WriteLine("GetAllCustomers requested");
+            List<DBCustomer> customersList;
+            try
+            {
+                customersList = dbContext.GetAllCustomers();
+            }
+            catch (Exception ex)
+            {
+                return new CustomersListResponse
+                {
+                    IsSuccess = false,
+                    Message = ex.Message
+                };
+            }
+
+            return new CustomersListResponse
+            {
+                Customers = DBDataConverter.Convert(customersList),
+            };
         }
 
         public ItemsListResponse GetAllItems(BaseRequest request)
@@ -100,6 +124,36 @@ namespace OrdersService.Server.Behaviours
                 Orders = DBDataConverter.Convert(orders),
             };
         }
+
+        public CustomerOrdersResponse GetCustomerOrders(GetCustomerOrdersRequest request)
+        {
+            Console.WriteLine($"GetCustomerOrders requested for customer id: {request.CustomerId}");
+            var response = new CustomerOrdersResponse();
+            try
+            {
+                List<DBOrder> dBOrders = dbContext.GetCustomerOrders(request.CustomerId);
+                var list = new List<CustomerOrderDto>();
+                foreach (var item in dBOrders)
+                {
+                    list.Add(new CustomerOrderDto
+                    {
+                        Created = item.CreationTime,
+                        CurrentStatus = (OrderStatusDto)Enum.Parse(typeof(OrderStatusDto), item.Status),
+                        OrderName = item.Name,
+                        TotalPrice = dbContext.GetOrderTotalPrice(item.Id)
+                    });
+                }
+                response.CustomerOrders = list;
+
+            }
+            catch (Exception ex)
+            {
+                response.IsSuccess = false;
+                response.Message = ex.Message; 
+            }
+            return response;
+        }
+
         public OrderDetailsResponse GetOrderDetails(GetOrderDetailsRequest request)
         {
             Console.WriteLine($"GetOrderDetails requested for order id: {request.OrderId}");

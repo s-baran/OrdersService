@@ -107,21 +107,31 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetails.cs" />
     <Compile Include="Models\OrderStatus.cs" />
+    <Compile Include="Models\ReportType.cs" />
+    <Compile Include="Models\Report\CustomerReportItem.cs" />
+    <Compile Include="Models\Report\QuarterReportItem.cs" />
     <Compile Include="Models\SelectableItem.cs" />
     <Compile Include="Utils\DataInserter.cs" />
+    <Compile Include="Utils\DataLoaders\CustomerReportItemDataLoader.cs" />
+    <Compile Include="Utils\DataLoaders\CustomersListLoader.cs" />
     <Compile Include="Utils\DataLoaders\DataLoader.cs" />
+    <Compile Include="Utils\DataLoaders\IDataLoader.cs" />
     <Compile Include="Utils\DataLoaders\ItemsLoader.cs" />
     <Compile Include="Utils\DataLoaders\OrderDetailsLoader.cs" />
+    <Compile Include="Utils\DataLoaders\QuarterReportItemDataLoader.cs" />
     <Compile Include="Utils\DataRemover.cs" />
     <Compile Include="Utils\MapperConfigurations\ConfigurationGenerator.cs" />
     <Compile Include="Utils\NavigationService.cs" />
     <Compile Include="Utils\DataLoaders\OrdersLoader.cs" />
+    <Compile Include="Utils\ReportResolver.cs" />
     <Compile Include="Validators\NotEmptyRule.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\NewOrderDetailsViewModel.cs" />
     <Compile Include="ViewModels\OrderDetailsViewModel.cs" />
     <Compile Include="ViewModels\OrdersListViewModel.cs" />
+    <Compile Include="ViewModels\ReportViewModel.cs" />
+    <Compile Include="ViewModels\SelectCustomerViewModel.cs" />
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -141,6 +151,15 @@
     <Compile Include="Views\OrdersListView.xaml.cs">
       <DependentUpon>OrdersListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SelectCustomerWindow.xaml.cs">
+      <DependentUpon>SelectCustomerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\CustomerReport.xaml.cs">
+      <DependentUpon>CustomerReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\QuarterReport.xaml.cs">
+      <DependentUpon>QuarterReport.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -158,6 +177,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\OrdersListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SelectCustomerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\CustomerReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\QuarterReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

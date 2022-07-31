@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Models\CreateOrderModelDto.cs" />
     <Compile Include="Models\CustomerDto.cs" />
+    <Compile Include="Models\CustomerOrderDto.cs" />
     <Compile Include="Models\ItemDto.cs" />
     <Compile Include="Models\OrderItemDto.cs" />
     <Compile Include="Models\OrderDto.cs" />
